@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         verbose="true">
+      <php>
+            <server name="KERNEL_CLASS" value="App\Kernel" />
+            <env name="APP_ENV" value="test" />
+            <env name="SHELL_VERBOSITY" value="-1" />
+            <env name="DATABASE_URL" value="mysql://root@127.0.0.1:3306/symfony_db" />
+            <env name="JWT_SECRET_KEY" value="%kernel.project_dir%/config/jwt/private.pem" />
+            <env name="JWT_PUBLIC_KEY" value="%kernel.project_dir%/config/jwt/public.pem" />
+            <env name="JWT_PASSPHRASE" value="c6b71fffed56a7772e3db985141b2c0f83f75b0fe938149a2f02d0edfaf19d3d" />
+        </php>
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
+
+    <extensions>
+    </extensions>
+</phpunit>
